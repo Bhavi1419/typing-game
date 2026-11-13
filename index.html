@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speed Typing Competition</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Speed Typing Competition</h1>
+
+    <div class="controls">
+      <input type="text" id="player-name" placeholder="Type your name here..." maxlength="20" />
+      <button id="restart-btn" type="button">New Race</button>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat"><span>Time Left</span><strong id="timer">60s</strong></div>
+      <div class="stat"><span>Live WPM</span><strong id="wpm">0</strong></div>
+      <div class="stat"><span>Accuracy</span><strong id="accuracy">100%</strong></div>
+    </div>
+
+    <div id="quote-display" class="quote-box" aria-live="polite"></div>
+
+    <textarea
+      id="quote-input"
+      rows="4"
+      placeholder="Start typing here to start the clock..."
+      autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+    ></textarea>
+
+    <p id="status-msg" class="status-msg"></p>
+
+    <section class="leaderboard-section">
+      <h2>Top Typists Leaderboard</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>WPM</th>
+            <th>Accuracy</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <tr><td colspan="5">Loading scores...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

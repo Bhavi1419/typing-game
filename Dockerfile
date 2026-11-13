@@ -1,0 +1,3 @@
+FROM php:8.2-apache
+COPY . /var/www/html/
+RUN chmod 666 /var/www/html/scores.json
