@@ -1,14 +1,14 @@
 :root {
-  --bg-dark: #0b0f19;
-  --card-bg: rgba(20, 27, 45, 0.75);
-  --card-border: rgba(255, 255, 255, 0.09);
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --cyan: #38bdf8;
-  --amber: #fbbf24;
-  --green: #4ade80;
-  --red: #f87171;
-  --purple: #818cf8;
+  --bg-obsidian: #050807;
+  --card-bg: rgba(14, 23, 20, 0.82);
+  --card-border: rgba(16, 185, 129, 0.18);
+  --text-main: #ecfdf5;
+  --text-muted: #86a397;
+  --emerald: #10b981;
+  --mint: #34d399;
+  --gold: #fbbf24;
+  --rose: #fb7185;
+  --teal: #14b8a6;
 }
 
 * {
@@ -19,7 +19,7 @@
 
 body {
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  background: radial-gradient(circle at top right, #1e1b4b, #0b0f19 55%);
+  background: radial-gradient(circle at top left, #064e3b 0%, #071310 42%, #050807 100%);
   color: var(--text-main);
   min-height: 100vh;
   padding: 24px 16px;
@@ -35,11 +35,11 @@ body {
 
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--card-border);
   border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
 }
 
 /* Header */
@@ -52,9 +52,10 @@ body {
 }
 
 .top-bar h1 {
-  font-size: 1.7rem;
-  background: linear-gradient(90deg, var(--cyan), var(--purple));
--webkit-background-clip: text;
+  font-size: 1.75rem;
+  background: linear-gradient(90deg, var(--mint), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -65,8 +66,8 @@ body {
 }
 
 .icon-btn {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text-main);
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--mint);
   border: 1px solid var(--card-border);
   padding: 9px 14px;
   border-radius: 10px;
@@ -76,7 +77,7 @@ body {
 }
 
 .icon-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(16, 185, 129, 0.2);
   transform: translateY(-1px);
 }
 
@@ -107,18 +108,19 @@ body {
 }
 
 .player-box input {
-  background: rgba(11, 15, 25, 0.8);
+  background: rgba(5, 8, 7, 0.85);
   border: 1px solid var(--card-border);
   color: var(--text-main);
   padding: 9px 12px;
   border-radius: 10px;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .player-box input:focus {
-  border-color: var(--cyan);
+  border-color: var(--emerald);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
 }
 
 .pill-group {
@@ -129,7 +131,7 @@ body {
 
 .pills {
   display: flex;
-  background: rgba(11, 15, 25, 0.8);
+  background: rgba(5, 8, 7, 0.85);
   padding: 4px;
   border-radius: 10px;
   border: 1px solid var(--card-border);
@@ -153,18 +155,18 @@ body {
 }
 
 .pill.active {
-  background: var(--cyan);
-  color: #0b0f19;
-  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
+  background: var(--emerald);
+  color: #04130d;
+  box-shadow: 0 2px 12px rgba(16, 185, 129, 0.4);
 }
 
 .primary-btn {
-  background: linear-gradient(135deg, var(--cyan), var(--purple));
-  color: #0b0f19;
+  background: linear-gradient(135deg, var(--emerald), var(--gold));
+  color: #04130d;
   border: none;
   padding: 10px 18px;
   border-radius: 10px;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.92rem;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.2s ease;
@@ -172,7 +174,7 @@ body {
 
 .primary-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.35);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
 }
 
 .primary-btn:active {
@@ -206,8 +208,8 @@ body {
   font-weight: 800;
 }
 
-.accent-cyan { color: var(--cyan); }
-.accent-amber { color: var(--amber); }
+.accent-cyan { color: var(--mint); }
+.accent-amber { color: var(--gold); }
 .accent-fire { color: #fb923c; }
 
 /* Typing Card */
@@ -219,7 +221,7 @@ body {
 }
 
 .typing-card:focus-within {
-  border-color: rgba(56, 189, 248, 0.5);
+  border-color: rgba(16, 185, 129, 0.55);
 }
 
 .progress-track {
@@ -234,7 +236,7 @@ body {
 .progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--cyan), var(--green));
+  background: linear-gradient(90deg, var(--emerald), var(--gold));
   transition: width 0.15s ease-out;
 }
 
@@ -255,30 +257,30 @@ body {
 }
 
 .char.correct {
-  color: var(--green);
+  color: var(--mint);
 }
 
 .char.incorrect {
-  color: var(--red);
-  background: rgba(248, 113, 113, 0.18);
+  color: var(--rose);
+  background: rgba(251, 113, 133, 0.2);
   text-decoration: underline;
 }
 
 .char.current {
   color: var(--text-main);
-  background: rgba(56, 189, 248, 0.22);
-  border-bottom: 2px solid var(--cyan);
+  background: rgba(251, 191, 36, 0.22);
+  border-bottom: 2px solid var(--gold);
   animation: pulseCursor 1s infinite;
 }
 
 @keyframes pulseCursor {
-  0%, 100% { border-bottom-color: var(--cyan); }
+  0%, 100% { border-bottom-color: var(--gold); }
   50% { border-bottom-color: transparent; }
 }
 
 .shake {
   animation: errorShake 0.25s ease-in-out;
-  border-color: rgba(248, 113, 113, 0.6) !important;
+  border-color: rgba(251, 113, 133, 0.65) !important;
 }
 
 @keyframes errorShake {
@@ -289,7 +291,7 @@ body {
 
 .typing-input {
   width: 100%;
-  background: rgba(11, 15, 25, 0.85);
+  background: rgba(5, 8, 7, 0.9);
   border: 1px solid var(--card-border);
   color: var(--text-main);
   font-family: "Consolas", monospace;
@@ -300,13 +302,13 @@ body {
 }
 
 .typing-input:focus {
-  border-color: var(--cyan);
+  border-color: var(--emerald);
 }
 
 .status-msg {
   margin-top: 12px;
   font-size: 0.92rem;
-  color: var(--amber);
+  color: var(--gold);
   font-weight: 500;
 }
 
@@ -328,8 +330,8 @@ body {
 
 .lb-badge {
   font-size: 0.75rem;
-  background: rgba(74, 222, 128, 0.14);
-  color: var(--green);
+  background: rgba(16, 185, 129, 0.16);
+  color: var(--mint);
   padding: 4px 10px;
   border-radius: 999px;
   font-weight: 600;
@@ -355,16 +357,16 @@ th {
 
 td {
   padding: 11px 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.08);
   font-size: 0.95rem;
 }
 
 tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(16, 185, 129, 0.06);
 }
 
 .highlight-row {
-  background: rgba(56, 189, 248, 0.14) !important;
+  background: rgba(16, 185, 129, 0.16) !important;
 }
 
 .empty-row {
