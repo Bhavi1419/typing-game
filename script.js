@@ -2,7 +2,9 @@ const PASSAGES = [
   "Clean code always looks like it was written by someone who cares about the craft of software engineering.",
   "Data structures and algorithms form the backbone of efficient problem solving in modern computer science.",
   "Version control with Git allows developers to track changes, collaborate safely, and deploy reliable releases.",
-  "Fast typing comes from rhythm and accuracy rather than rushing through keys and fixing constant mistakes."
+  "Fast typing comes from rhythm and accuracy rather than rushing through keys and fixing constant mistakes.",
+  "If your Lucky you wil get this paragraph.",
+  "Chase goals not girls,make money automatically girls will follow you."
 ];
 
 const quoteDisplay = document.getElementById("quote-display");
