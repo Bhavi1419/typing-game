@@ -3,57 +3,115 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Speed Typing Competition</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Speed Typing Arena</title>
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
-  <main class="container">
-    <h1>Speed Typing Competition</h1>
+  <div class="app-container">
+    <header class="top-bar">
+      <div>
+        <h1>⚡ Speed Typing Arena</h1>
+        <p class="subtitle">Race the clock, build your streak, claim #1</p>
+      </div>
+      <button id="sound-toggle" class="icon-btn" type="button" title="Toggle Keystroke Sounds">
+        🔊 Sound: ON
+      </button>
+    </header>
 
-    <div class="controls">
-      <input type="text" id="player-name" placeholder="Type your name here..." maxlength="20" />
-      <button id="restart-btn" type="button">New Race</button>
-    </div>
+    <!-- Controls & Mode Selectors -->
+    <section class="controls-panel glass-card">
+      <div class="player-box">
+        <label for="player-name">Player</label>
+        <input type="text" id="player-name" placeholder="Enter your name..." maxlength="20" />
+      </div>
 
-    <div class="stats-bar">
-      <div class="stat"><span>Time Left</span><strong id="timer">60s</strong></div>
-      <div class="stat"><span>Live WPM</span><strong id="wpm">0</strong></div>
-      <div class="stat"><span>Accuracy</span><strong id="accuracy">100%</strong></div>
-    </div>
+      <div class="pill-group">
+        <span class="group-label">Difficulty</span>
+        <div class="pills" id="difficulty-pills">
+          <button type="button" class="pill active" data-diff="easy">Easy</button>
+          <button type="button" class="pill" data-diff="medium">Medium</button>
+          <button type="button" class="pill" data-diff="hard">Hard</button>
+        </div>
+      </div>
 
-    <div id="quote-display" class="quote-box" aria-live="polite"></div>
+      <div class="pill-group">
+        <span class="group-label">Timer</span>
+        <div class="pills" id="time-pills">
+          <button type="button" class="pill" data-time="15">15s</button>
+          <button type="button" class="pill active" data-time="30">30s</button>
+          <button type="button" class="pill" data-time="60">60s</button>
+        </div>
+      </div>
 
-    <textarea
-      id="quote-input"
-      rows="4"
-      placeholder="Start typing here to start the clock..."
-      autocomplete="off"
-      autocorrect="off"
-      autocapitalize="off"
-      spellcheck="false"
-    ></textarea>
-
-    <p id="status-msg" class="status-msg"></p>
-
-    <section class="leaderboard-section">
-      <h2>Top Typists Leaderboard</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Player</th>
-            <th>WPM</th>
-            <th>Accuracy</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody id="leaderboard-body">
-          <tr><td colspan="5">Loading scores...</td></tr>
-        </tbody>
-      </table>
+      <button id="restart-btn" class="primary-btn" type="button">↻ New Race</button>
     </section>
-  </main>
 
-  <script src="script.js?v=2"></script>
+    <!-- Live HUD Stats -->
+    <section class="hud-grid">
+      <div class="hud-card glass-card">
+        <span class="hud-label">LIVE WPM</span>
+        <span class="hud-value accent-cyan" id="wpm">0</span>
+      </div>
+      <div class="hud-card glass-card">
+        <span class="hud-label">ACCURACY</span>
+        <span class="hud-value" id="accuracy">100%</span>
+      </div>
+      <div class="hud-card glass-card">
+        <span class="hud-label">TIME LEFT</span>
+        <span class="hud-value accent-amber" id="timer">30s</span>
+      </div>
+      <div class="hud-card glass-card">
+        <span class="hud-label">STREAK</span>
+        <span class="hud-value accent-fire" id="streak">🔥 0</span>
+      </div>
+    </section>
+
+    <!-- Typing Arena -->
+    <main id="typing-card" class="typing-card glass-card">
+      <div class="progress-track">
+        <div id="progress-bar" class="progress-fill"></div>
+      </div>
+
+      <div id="passage-display" class="passage-box" title="Click to focus and start typing"></div>
+
+      <input
+        type="text"
+        id="typing-input"
+        class="typing-input"
+        placeholder="Click here and start typing to begin the race..."
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      />
+
+      <p id="status-msg" class="status-msg">Ready when you are — timer starts on your first keystroke.</p>
+    </main>
+
+    <!-- Live Leaderboard -->
+    <section class="leaderboard-card glass-card">
+      <div class="lb-header">
+        <h2>🏆 Top Typists Leaderboard</h2>
+        <span class="lb-badge">Live Global Ranking</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Player</th>
+              <th>WPM</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body">
+            <tr><td colspan="4" class="empty-row">Loading scores...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js?v=3"></script>
 </body>
 </html>

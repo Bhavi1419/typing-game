@@ -3,7 +3,7 @@ const PASSAGES = [
   "Data structures and algorithms form the backbone of efficient problem solving in modern computer science.",
   "Version control with Git allows developers to track changes, collaborate safely, and deploy reliable releases.",
   "Fast typing comes from rhythm and accuracy rather than rushing through keys and fixing constant mistakes.",
-  "If your Lucky you will get this paragraph.",
+  "If your Lucky you wil get this paragraph.",
   "Chase goals not girls,make money automatically girls will follow you."
 ];
 
