@@ -1,3 +1,10 @@
+const THEMES = [
+  { id: "emerald", label: "🎨 Midnight Emerald" },
+  { id: "cyberpunk", label: "🎨 Cyberpunk Neon" },
+  { id: "crimson", label: "🎨 Solar Crimson" },
+  { id: "ocean", label: "🎨 Deep Ocean" }
+];
+
 const PASSAGES = {
   easy: [
     "Fast typing comes from steady rhythm and accuracy rather than rushing through keys and fixing mistakes.",
@@ -32,7 +39,35 @@ const statusMsg = document.getElementById("status-msg");
 const playerNameInput = document.getElementById("player-name");
 const restartBtn = document.getElementById("restart-btn");
 const soundToggleBtn = document.getElementById("sound-toggle");
+const themeToggleBtn = document.getElementById("theme-toggle");
 const leaderboardBody = document.getElementById("leaderboard-body");
+
+// Automatic 30-Second Theme Rotation
+let currentThemeIndex = 0;
+let themeInterval = null;
+
+function applyTheme(index) {
+  currentThemeIndex = index % THEMES.length;
+  const theme = THEMES[currentThemeIndex];
+  if (theme.id === "emerald") {
+    document.body.removeAttribute("data-theme");
+  } else {
+    document.body.setAttribute("data-theme", theme.id);
+  }
+  themeToggleBtn.textContent = theme.label;
+}
+
+function startThemeRotation() {
+  clearInterval(themeInterval);
+  themeInterval = setInterval(() => {
+    applyTheme(currentThemeIndex + 1);
+  }, 30000); // Switches theme every 30 seconds
+}
+
+themeToggleBtn.addEventListener("click", () => {
+  applyTheme(currentThemeIndex + 1);
+  startThemeRotation(); // Reset the 30-second countdown after manual click
+});
 
 // Game State
 let currentDifficulty = "easy";
@@ -179,7 +214,6 @@ typingInput.addEventListener("input", () => {
     }
   });
 
-  // Sound & Streak Feedback when typing a new character
   if (isAddingChar && typedChars.length <= currentText.length) {
     const lastIdx = typedChars.length - 1;
     const isHit = typedChars[lastIdx] === currentText[lastIdx];
@@ -191,7 +225,7 @@ typingInput.addEventListener("input", () => {
       streak = 0;
       playKeySound(false);
       typingCard.classList.remove("shake");
-      void typingCard.offsetWidth; // Restart CSS animation
+      void typingCard.offsetWidth;
       typingCard.classList.add("shake");
     }
     streakEl.textContent = `🔥 ${streak}`;
@@ -199,12 +233,10 @@ typingInput.addEventListener("input", () => {
 
   prevTypedLength = typedChars.length;
 
-  // Update Progress Bar & Live Stats
   const progressPct = Math.min(100, (typedChars.length / currentText.length) * 100);
   progressBar.style.width = `${progressPct}%`;
   updateLiveStats();
 
-  // Finish early if entire passage is completed
   if (typedChars.length >= currentText.length) {
     finishRace();
   }
@@ -275,7 +307,7 @@ function renderLeaderboard(scores, highlightName = "") {
         <tr class="${isMe ? "highlight-row" : ""}">
           <td><strong>${medal}</strong></td>
           <td>${escapeHtml(entry.name)}</td>
-          <td><span class="accent-cyan"><strong>${entry.wpm}</strong></span></td>
+          <td><span class="accent-primary"><strong>${entry.wpm}</strong></span></td>
           <td>${entry.accuracy}%</td>
         </tr>
       `;
@@ -337,5 +369,7 @@ document.querySelectorAll("#time-pills .pill").forEach((btn) => {
 const savedName = localStorage.getItem("typingPlayerName");
 if (savedName) playerNameInput.value = savedName;
 
+applyTheme(0);
+startThemeRotation();
 loadNewPassage();
 fetchLeaderboard();

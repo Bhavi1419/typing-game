@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Speed Typing Arena</title>
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
   <div class="app-container">
@@ -13,9 +13,14 @@
         <h1>⚡ Speed Typing Arena</h1>
         <p class="subtitle">Race the clock, build your streak, claim #1</p>
       </div>
-      <button id="sound-toggle" class="icon-btn" type="button" title="Toggle Keystroke Sounds">
-        🔊 Sound: ON
-      </button>
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" title="Changes automatically every 30s (Click to switch now)">
+          🎨 Midnight Emerald
+        </button>
+        <button id="sound-toggle" class="icon-btn" type="button" title="Toggle Keystroke Sounds">
+          🔊 Sound: ON
+        </button>
+      </div>
     </header>
 
     <!-- Controls & Mode Selectors -->
@@ -50,7 +55,7 @@
     <section class="hud-grid">
       <div class="hud-card glass-card">
         <span class="hud-label">LIVE WPM</span>
-        <span class="hud-value accent-cyan" id="wpm">0</span>
+        <span class="hud-value accent-primary" id="wpm">0</span>
       </div>
       <div class="hud-card glass-card">
         <span class="hud-label">ACCURACY</span>
@@ -58,7 +63,7 @@
       </div>
       <div class="hud-card glass-card">
         <span class="hud-label">TIME LEFT</span>
-        <span class="hud-value accent-amber" id="timer">30s</span>
+        <span class="hud-value accent-secondary" id="timer">30s</span>
       </div>
       <div class="hud-card glass-card">
         <span class="hud-label">STREAK</span>
@@ -112,6 +117,6 @@
     </section>
   </div>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
