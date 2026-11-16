@@ -1,11 +1,13 @@
 <?php
 header('Content-Type: application/json');
+require_once 'db.php';
 
-$file = __DIR__ . '/scores.json';
-if (!file_exists($file)) {
-    echo json_encode([]);
-    exit;
-}
+$stmt = $pdo->query(
+    "SELECT player_name AS name, wpm, accuracy, difficulty, played_at 
+     FROM scores 
+     ORDER BY wpm DESC, accuracy DESC, id ASC 
+     LIMIT 15"
+);
 
-$content = file_get_contents($file);
-echo $content ?: json_encode([]);
+echo json_encode($stmt->fetchAll());
+?>
